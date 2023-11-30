@@ -1,0 +1,30 @@
+statistic chi
+data 1:1 spec_mcrab.pha
+ignore 1:1-18,998-1498
+
+method leven 10 0.01
+abund angr
+xsect vern
+cosmo 70 0 0.73
+xset delta 0.01
+systematic 0
+model  phabs*pegpwrlw
+DEFAULT
+bayes off
+fit
+cpd /xw
+setplot energy
+
+# SETPLOT SETTINGS
+# > setplot rebin 3 5 1
+# Bins in plot group 1 are plotted that have at least 3 sigma,
+# or are grouped in sets of 5 bins.
+# > setplot rebin 5 5
+# The significance is increased to 5 sigma.
+# > setplot rebin,,10,-1
+# All plotted bins can be grouped into up to 10 bins in reaching the
+# 5 sigma significance criterion.
+# > setplot rebin ,,,sqrt
+# Uses sqrt(N) to calculate error bars
+setplot rebin 3 5 1
+plot data delchi eeufspec resid 
